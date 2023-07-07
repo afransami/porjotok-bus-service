@@ -5,9 +5,11 @@ import Navbar from "../Shared/Navbar/Navbar";
 
 const Main = () => {
   return (
-    <div className="container mx-auto">
-      <Navbar></Navbar>
-      <div className="min-h-[calc(100vh-298px)]">
+    <div>
+      <div className="mx-auto container">
+        <Navbar></Navbar>
+      </div>
+      <div className="min-h-[calc(100vh-484px)]">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>

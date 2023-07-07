@@ -6,21 +6,21 @@ const Navbar = () => {
     <>
       <li>
         <Link to="/">Home</Link>
-      </li>   
+      </li>
       <li>
         <Link to="/bus-reservation">Bus Reservation</Link>
       </li>
       <li>
         <Link to="/contact-us">Contact Us</Link>
-      </li>      
+      </li>
     </>
   );
 
   return (
-    <div className="navbar fixed z-10 bg-base-100 bg-opacity-30 container mx-auto">
+    <div className="navbar fixed z-10 mt-4  h-16 mx-auto container rounded flex justify-between">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden bg-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -38,24 +38,26 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 "
           >
             {NavOptions}
           </ul>
         </div>
-        <div className="uppercase lg:font-extrabold lg:tracking-widest  text-center">
+        <div className="uppercase lg:font-extrabold lg:tracking-widest text-center mx-4">
           <Link>
-            <p className="scale-110 text-xl font-serif text-indigo-600">Porjotok </p>
-            <p className="lg:scale-125 scale-110 font-extralight font-serif">
+            <p className="scale-110 text-xl font-serif text-white">
+              Porjotok{" "}
+            </p>
+            <p className="lg:scale-125 scale-110 font-extralight font-serif text-white">
               Bus Service
             </p>
           </Link>
         </div>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{NavOptions}</ul>
+      <div className="navbar-center hidden lg:flex items-center justify-between">
+        <ul className="menu menu-horizontal px-1 text-white text-xl">{NavOptions}</ul>
       </div>
-      {/* <div className="navbar-end">
+      <div className="navbar-end">
         <Link>
           <a
             className="group relative inline-block overflow-hidden border border-indigo-600 px-8 py-2 focus:outline-none focus:ring"
@@ -68,7 +70,7 @@ const Navbar = () => {
             </span>
           </a>
         </Link>
-      </div> */}
+      </div>
     </div>
   );
 };
