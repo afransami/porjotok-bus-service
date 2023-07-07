@@ -157,8 +157,8 @@ const Banner = () => {
         {/* <div className="absolute inset-0 bg-white/45 from-white/95 to-white/25 ltr:bg-gradient-to-r rtl:bg-gradient-to-l"></div> */}
         <div className="absolute inset-0 bg-gradient-to-r w-full from-[#151515] to-[rgba(21, 21, 21, 0)]"></div>
 
-        <div className="relative -top-1/4 max-w-screen-xl py-32 px-4 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
-          <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
+        <div className="relative -top-1/4 max-w-screen-xl py-32 px-4 sm:px-6 lg:left-52 lg:flex lg:h-screen lg:items-center lg:px-8">
+          <div className="max-w-xl ltr:sm:text-left rtl:sm:text-right">
             <h1 className="text-3xl text-start font-extrabold sm:text-5xl">
               <span className="text-white"> Let us find your</span>
 
@@ -172,7 +172,7 @@ const Banner = () => {
               illo tenetur fuga ducimus numquam ea!
             </p>
 
-            <div className="navbar-end mt-4 flex justify-center items-center gap-4">
+            <div className="navbar-end mt-4 flex justify-start items-center gap-4">
               <Link>
                 <a
                   className="group relative inline-block overflow-hidden border border-indigo-600 px-4 py-2 focus:outline-none focus:ring"

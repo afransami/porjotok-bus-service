@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { HiMenuAlt3 } from "react-icons/hi";
+
 
 const Navbar = () => {
+ 
   const NavOptions = (
     <>
       <li>
@@ -20,8 +23,8 @@ const Navbar = () => {
     <div className="navbar fixed z-10 mt-4  h-16 mx-auto container rounded flex justify-between">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden bg-white">
-            <svg
+          <label tabIndex={0} className="btn text-2xl  lg:hidden ">
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
               fill="none"
@@ -34,7 +37,9 @@ const Navbar = () => {
                 strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
               />
-            </svg>
+            </svg> */}
+
+<HiMenuAlt3></HiMenuAlt3>
           </label>
           <ul
             tabIndex={0}
