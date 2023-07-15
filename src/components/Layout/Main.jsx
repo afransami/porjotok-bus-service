@@ -5,14 +5,16 @@ import Navbar from "../Shared/Navbar/Navbar";
 
 const Main = () => {
   return (
-    <div>
+    <div >
       <div className="mx-auto container">
         <Navbar></Navbar>
       </div>
-      <div className="min-h-[calc(100vh-484px)]">
+      <div className="min-h-[calc(100vh-484px)]">        
         <Outlet></Outlet>
       </div>
+      <div className="mx-auto container">
       <Footer></Footer>
+      </div>
     </div>
   );
 };

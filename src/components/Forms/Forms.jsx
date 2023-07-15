@@ -1,228 +1,79 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Forms = () => {
   return (
-   
     <div className="flex items-center justify-center p-12">
+      <form className="mx-auto w-full max-w-[550px]">
+        <div className="-mx-3 flex flex-wrap">
+          <div className="w-full px-3">
+            <div className="mb-5">
+              <label
+                htmlFor="from"
+                className="mb-3 block text-base font-medium text-[#07074D]"
+              >
+                From
+              </label>
+              <input
+                type="text"
+                name="from"
+                id="from"
+                placeholder="Enter pick-up point"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mb-5">
+          <label
+            htmlFor="guest"
+            className="mb-3 block text-base font-medium text-[#07074D]"
+          >
+            To
+          </label>
+          <input
+            type="text"
+            name="to"
+            id="to"
+            placeholder="Enter stop place"
+            min="0"
+            className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          />
+        </div>
 
-    
-      <div className="mx-auto w-full max-w-[550px]">
-        <form>
-          <div className="-mx-3 flex flex-wrap">
-            <div className="w-full px-3">
-              <div className="mb-5">
-                <label
-                  for="from"
-                  className="mb-3 block text-base font-medium text-[#07074D]"
-                >
-                  From
-                </label>
-                <input
-                  type="text"
-                  name="from"
-                  id="from"
-                  placeholder="Enter pick-up point"
-                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                />
-              </div>
+        <div className="-mx-3 flex flex-wrap">
+          <div className="w-full px-3">
+            <div className="mb-5">
+              <label
+                htmlFor="date"
+                className="mb-3 block text-base font-medium text-[#07074D]"
+              >
+                Date of Journey
+              </label>
+              <input
+                type="date"
+                name="date"
+                id="date"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              />
             </div>
-            
           </div>
-          <div className="mb-5">
-            <label
-              for="guest"
-              className="mb-3 block text-base font-medium text-[#07074D]"
-            >
-              To
-            </label>
-            <input
-              type="text"
-              name="to"
-              id="to"
-              placeholder="Enter stop place"
-              min="0"
-              className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-            />
-          </div>
-    
-          <div className="-mx-3 flex flex-wrap">
-            <div className="w-full px-3">
-              <div className="mb-5">
-                <label
-                  for="date"
-                  className="mb-3 block text-base font-medium text-[#07074D]"
-                >
-                  Date of Journey
-                </label>
-                <input
-                  type="date"
-                  name="date"
-                  id="date"
-                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                />
-              </div>
-            </div>
-          
-          </div>
-    
-      
-    
-          <div>
-            <button
-              className="btn btn-primary bg-indigo-500 border-0 text-lg text-white text-bold"
-            >
-              Search Bus
-            </button>
-          </div>
-        </form>
-      </div>
+        </div>
+
+        <div>
+          <Link
+            className="group relative text-center block w-full overflow-hidden border-b-0 px-8 py-3 focus:outline-none focus:ring"
+            to="/"
+          >
+            <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
+
+            <span className="relative text-xl font-medium text-green-400 transition-colors group-hover:text-white">
+               Search Bus
+            </span>
+          </Link>         
+        </div>
+      </form>
     </div>
-
-
-
-    // <section className="bg-gray-100">
-    //   <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-    //     <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-    //       <div className="lg:col-span-2 lg:py-12">
-    //         <p className="max-w-xl text-lg">
-    //           At the same time, the fact that we are wholly owned and totally
-    //           independent from manufacturer and other group control gives you
-    //           confidence that we will only recommend what is right for you.
-    //         </p>
-
-    //         <div className="mt-8">
-    //           <a href="" className="text-2xl font-bold text-pink-600">
-    //             0151 475 4450
-    //           </a>
-
-    //           <address className="mt-2 not-italic">
-    //             282 Kevin Brook, Imogeneborough, CA 58517
-    //           </address>
-    //         </div>
-    //       </div>
-
-    //       <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-    //         <form action="" className="space-y-4">
-    //           <div>
-    //             <label className="sr-only" htmlFor="name">
-    //               From
-    //             </label>
-    //             <input
-    //               className="w-full rounded-lg border-gray-200 p-3 text-sm"
-    //               placeholder="From"
-    //               type="text"
-    //               id="name"
-    //             />
-    //           </div>
-
-    //           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-    //             <div>
-    //               <label className="sr-only" htmlFor="email">
-    //                 Email
-    //               </label>
-    //               <input
-    //                 className="w-full rounded-lg border-gray-200 p-3 text-sm"
-    //                 placeholder="Email address"
-    //                 type="email"
-    //                 id="email"
-    //               />
-    //             </div>
-
-    //             <div>
-    //               <label className="sr-only" htmlFor="phone">
-    //                 Phone
-    //               </label>
-    //               <input
-    //                 className="w-full rounded-lg border-gray-200 p-3 text-sm"
-    //                 placeholder="Phone Number"
-    //                 type="tel"
-    //                 id="phone"
-    //               />
-    //             </div>
-    //           </div>
-
-    //           <div className="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
-    //             <div>
-    //               <input
-    //                 className="peer sr-only"
-    //                 id="option1"
-    //                 type="radio"
-    //                 tabIndex="-1"
-    //                 name="option"
-    //               />
-
-    //               <label
-    //                 htmlFor="option1"
-    //                 className="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white"
-    //                 tabIndex="0"
-    //               >
-    //                 <span className="text-sm"> Option 1 </span>
-    //               </label>
-    //             </div>
-
-    //             <div>
-    //               <input
-    //                 className="peer sr-only"
-    //                 id="option2"
-    //                 type="radio"
-    //                 tabIndex="-1"
-    //                 name="option"
-    //               />
-
-    //               <label
-    //                 htmlFor="option2"
-    //                 className="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white"
-    //                 tabIndex="0"
-    //               >
-    //                 <span className="text-sm"> Option 2 </span>
-    //               </label>
-    //             </div>
-
-    //             <div>
-    //               <input
-    //                 className="peer sr-only"
-    //                 id="option3"
-    //                 type="radio"
-    //                 tabIndex="-1"
-    //                 name="option"
-    //               />
-
-    //               <label
-    //                 htmlFor="option3"
-    //                 className="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white"
-    //                 tabIndex="0"
-    //               >
-    //                 <span className="text-sm"> Option 3 </span>
-    //               </label>
-    //             </div>
-    //           </div>
-
-    //           <div>
-    //             <label className="sr-only" htmlFor="message">
-    //               Message
-    //             </label>
-
-    //             <textarea
-    //               className="w-full rounded-lg border-gray-200 p-3 text-sm"
-    //               placeholder="Message"
-    //               rows="8"
-    //               id="message"
-    //             ></textarea>
-    //           </div>
-
-    //           <div className="mt-4">
-    //             <button
-    //               type="submit"
-    //               className="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
-    //             >
-    //               Send Enquiry
-    //             </button>
-    //           </div>
-    //         </form>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </section>
   );
 };
 

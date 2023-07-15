@@ -15,7 +15,7 @@ const Banner = () => {
             <h1 className="text-3xl text-start font-extrabold sm:text-5xl">
               <span className="text-white"> Let us find your</span>
 
-              <strong className="block text-start font-extrabold text-red-600">
+              <strong className="block text-start font-extrabold text-green-500">
                 Forever Home
               </strong>
             </h1>
@@ -25,19 +25,47 @@ const Banner = () => {
               illo tenetur fuga ducimus numquam ea!
             </p>
 
-            <div className="navbar-end mt-4 flex justify-start items-center gap-4">
-              <Link>
+            <div className=" mt-4 flex justify-start items-center gap-4">
+              {/* <Link>
                 <button
                   className="btn btn-outline text-white bg-red-600 px-2" >
                   Get Started                  
                 </button>
+              </Link> */}
+
+              <div>
+              <Link
+                className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring"
+                to="/"
+              >
+                <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
+
+                <span className="relative font-medium text-green-400 transition-colors group-hover:text-white">
+                  Get Started
+                </span>
               </Link>
-              <Link>
+              </div>
+
+              
+              <div>
+              <Link
+                className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring"
+                to="/"
+              >
+                <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
+
+                <span className="relative font-medium text-green-400 transition-colors group-hover:text-white">
+                  Get Started
+                </span>
+              </Link>
+              </div>
+
+              {/* <Link>
                 <button
                   className="btn btn-outline border-white text-white transition-transform hover:bg-red-600 px-2 " >
                   Get Started                  
                 </button>
-              </Link>
+              </Link> */}
 
               {/* <Link>
                 <button
@@ -51,8 +79,6 @@ const Banner = () => {
                   </span>
                 </button>
               </Link> */}
-
-            
             </div>
           </div>
         </div>
@@ -63,7 +89,7 @@ const Banner = () => {
           <div className="flex flex-wrap -m-4 text-center">
             <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
               <div className="border-2 border-gray-200 px-4 py-10 rounded-lg bg-gray-900 text-white flex flex-col justify-center items-center">
-                <ImLocation2 className="text-5xl text-indigo-500"></ImLocation2>
+                <ImLocation2 className="text-5xl text-green-500"></ImLocation2>
                 <h2 className="title-font font-medium text-3xl text-white ">
                   46
                 </h2>
@@ -72,7 +98,7 @@ const Banner = () => {
             </div>
             <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
               <div className="border-2 border-gray-200 px-4 py-10 rounded-lg bg-gray-900 text-white flex flex-col justify-center items-center">
-                <MdWifiCalling3 className="text-5xl text-indigo-500"></MdWifiCalling3>
+                <MdWifiCalling3 className="text-5xl text-green-500"></MdWifiCalling3>
                 <h2 className="title-font font-medium text-3xl text-white">
                   1.3K
                 </h2>
@@ -81,7 +107,7 @@ const Banner = () => {
             </div>
             <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
               <div className="border-2 border-gray-200 px-4 py-10 rounded-lg bg-gray-900 text-white flex flex-col justify-center items-center">
-                <FaClock className="text-5xl text-indigo-500"></FaClock>
+                <FaClock className="text-5xl text-green-500"></FaClock>
                 <h2 className="title-font font-medium text-3xl text-white">
                   30
                 </h2>
@@ -90,7 +116,7 @@ const Banner = () => {
             </div>
             <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
               <div className="border-2 border-gray-200 px-4 py-10 rounded-lg bg-gray-900 text-white flex flex-col justify-center items-center">
-                <FaBusAlt className="text-5xl text-indigo-500"></FaBusAlt>
+                <FaBusAlt className="text-5xl text-green-500"></FaBusAlt>
                 <h2 className="title-font font-medium text-3xl text-white  ">
                   1
                 </h2>

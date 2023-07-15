@@ -4,14 +4,18 @@ import App from "./App.jsx";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./components/Route/Route.jsx";
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from "react-helmet-async";
+import AuthProvider from "./components/Provider/AuthProvider/AuthProvider.jsx";
+import toast, { Toaster } from 'react-hot-toast';
 
 const helmetContext = {};
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <HelmetProvider context={helmetContext}>  
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <HelmetProvider context={helmetContext}>
+    <AuthProvider>
+      <React.StrictMode>
+        <RouterProvider router={router} />
+      </React.StrictMode>
+    </AuthProvider>
   </HelmetProvider>
 );

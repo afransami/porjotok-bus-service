@@ -4,6 +4,8 @@ import Banner from "../Banner/Banner";
 import NewsHeading from "../NewsHeading/NewsHeading";
 import Forms from "../Forms/Forms";
 import Login from "../Login/Login";
+import BusSeatPlan from "../AddBusDetails/BusSeatPlan";
+
 
 const Home = () => {
   return (
@@ -12,9 +14,10 @@ const Home = () => {
         <title>Porjotok Bus Service | Home</title>
       </Helmet>
       <Banner></Banner>
-      {/* <NewsHeading></NewsHeading> */}
+      <NewsHeading></NewsHeading>
       <Forms></Forms>
-      <Login></Login>
+      <BusSeatPlan></BusSeatPlan>
+      {/* <Login></Login> */}
     </div>
   );
 };
