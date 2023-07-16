@@ -7,7 +7,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import SocialLogin from "../SolcilalLogin/SocialLogin";
 import { toast } from "react-hot-toast";
-import { async } from "@firebase/util";
+import { saveUser } from "../API/Auth";
 
 const SignUp = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -30,46 +30,45 @@ const SignUp = () => {
   const from = location.state?.from?.pathname || "/";
 
   const onSubmit = async (data) => {
-
-    createUser(data.email, data.password, data.photURL).then((result) => {
-
-      const user = result.user;
-      console.log(user);
-      toast.success("Successfully SignUp!");
-      setError("");
-      reset();
-      navigate(from, { replace: true });
-    });
-
-    updateUserProfile(data.name, data.photURL).then(() => {
-      const saveUser = {
-        name: data.name,
-        email: data.email,
-        photoURL: data.photoURL,
-      };
-
-      fetch("http://localhost:5000/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(saveUser),
+    createUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Successfully SignUp!");
+        saveUser(result.user);
+        updateUserProfile(data.name, data.photURL)
+        setError("");
+        reset();
+        navigate(from, { replace: true });
       })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.inseredId) {
-            reset();
-            toast.success("User created successfully!");
-            reset();
-            navigate(from, { replace: true });
-            navigate("/");
-          }
 
-        })
-    })    
-    .catch((error) => console.error(error.message));
+      // updateUserProfile(data.name, data.photURL).then(() => {
+      //   const saveUser = {
+      //     name: data.name,
+      //     email: data.email,
+      //     photoURL: data.photoURL,
+      //   };
+
+      //   fetch(`http://localhost:5000/users/${user?.email}`, {
+      //     method: "PUT",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(saveUser),
+      //   })
+      //     .then((res) => res.json())
+      //     .then((data) => {
+      //       if (data.insertedId) {
+      //         reset();
+      //         toast.success("User created successfully!");
+      //         reset();
+      //         navigate(from, { replace: true });
+      //       }
+
+      //     })
+      // })
+      .catch((error) => console.error(error.message));
     setError(error.message);
-    navigate(from, { replace: true });
   };
 
   return (
@@ -104,10 +103,8 @@ const SignUp = () => {
                   {...register("name", { required: true })}
                   className="input input-bordered "
                 />
-                {errors.email && (
-                  <span className="text-yellow-500">
-                    This field is required
-                  </span>
+                {errors.name && (
+                  <span className="text-red-500">This field is required</span>
                 )}
               </div>
               <div className="form-control">
@@ -168,23 +165,16 @@ const SignUp = () => {
                 )}
               </div>
 
-              {/* <p className="font-bold text-yellow-500 text-xl"></p> */}
               <div className="form-control mt-6">
                 <button className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring text-center">
                   <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
 
                   <input
-                    className="relative text-xl font-medium text-green-400 transition-colors group-hover:text-white"                    
+                    className="relative text-xl font-medium text-green-400 transition-colors group-hover:text-white"
                     type="submit"
                     value="Sign-Up"
                   ></input>
                 </button>
-
-                {/* <input
-                  className="btn btn-outline btn-error border-0 border-b-4 mt-4 bg-gradient-to-r from-neutral-600 via-green-600 to-neutral-600 rounded shadow-xl bg-opacity-30 text-xl"
-                  type="submit"
-                  value="sign-Up"
-                /> */}
               </div>
               <SocialLogin></SocialLogin>
               <p className="text-center mt-5 font-semibold">
