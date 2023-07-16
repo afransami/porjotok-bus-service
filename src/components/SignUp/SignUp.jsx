@@ -1,14 +1,16 @@
-import React, { useContext, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import React, { useContext, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import SocialLogin from "../SolcilalLogin/SocialLogin";
+import { toast } from "react-hot-toast";
+import { async } from "@firebase/util";
 
 const SignUp = () => {
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const toggleConfirmPasswordVisibility = () => {
     setShowConfirmPassword(!showConfirmPassword);
@@ -21,23 +23,57 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const { signIn } = useContext(AuthContext);
+  const [error, setError] = useState(" ");
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (data) => {
-    signIn(data.email, data.password).then((result) => {
+  const onSubmit = async (data) => {
+
+    createUser(data.email, data.password, data.photURL).then((result) => {
+
       const user = result.user;
       console.log(user);
-      toast.success("Successfully login!");
+      toast.success("Successfully SignUp!");
+      setError("");
       reset();
       navigate(from, { replace: true });
     });
+
+    updateUserProfile(data.name, data.photURL).then(() => {
+      const saveUser = {
+        name: data.name,
+        email: data.email,
+        photoURL: data.photoURL,
+      };
+
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(saveUser),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.inseredId) {
+            reset();
+            toast.success("User created successfully!");
+            reset();
+            navigate(from, { replace: true });
+            navigate("/");
+          }
+
+        })
+    })    
+    .catch((error) => console.error(error.message));
+    setError(error.message);
+    navigate(from, { replace: true });
   };
 
-    return (
-        <div className="login-bg hero min-h-screen mx-auto container">
+  return (
+    <div className="login-bg hero min-h-screen mx-auto container">
       <Helmet>
         <title>Porjotok Bus Service | SignUp</title>
       </Helmet>
@@ -55,9 +91,9 @@ const SignUp = () => {
         </Player>
         <div className="card flex-shrink-0 bg-gray-100 shadow-xl">
           <h1 className="text-4xl p-5 font-bold">Sign Up!</h1>
-          <form onSubmit={handleSubmit(handleLogin)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="card-body">
-            <div className="form-control">
+              <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
@@ -116,17 +152,17 @@ const SignUp = () => {
                 </button>
 
                 {errors.password?.type === "required" && (
-                  <p className="text-yellow-500" role="alert">
+                  <p className="text-red-500" role="alert">
                     password is required
                   </p>
                 )}
                 {errors.password?.type === "minLength" && (
-                  <p className="text-yellow-500" role="alert">
+                  <p className="text-red-500" role="alert">
                     password must be 6 characters
                   </p>
                 )}
                 {errors.password?.type === "pattern" && (
-                  <p className="text-yellow-500" role="alert">
+                  <p className="text-red-500" role="alert">
                     password must be at least 1 uppercase or letter case
                   </p>
                 )}
@@ -134,21 +170,15 @@ const SignUp = () => {
 
               {/* <p className="font-bold text-yellow-500 text-xl"></p> */}
               <div className="form-control mt-6">
-                
-
-
-              <Link
-                  className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring text-center"                  
-                >
+                <button className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring text-center">
                   <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
 
                   <input
-                    className="relative text-xl font-medium text-green-400 transition-colors group-hover:text-white"
+                    className="relative text-xl font-medium text-green-400 transition-colors group-hover:text-white"                    
                     type="submit"
                     value="Sign-Up"
                   ></input>
-                </Link>
-
+                </button>
 
                 {/* <input
                   className="btn btn-outline btn-error border-0 border-b-4 mt-4 bg-gradient-to-r from-neutral-600 via-green-600 to-neutral-600 rounded shadow-xl bg-opacity-30 text-xl"
@@ -168,7 +198,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default SignUp;
