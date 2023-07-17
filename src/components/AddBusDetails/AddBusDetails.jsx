@@ -19,7 +19,7 @@ const AddBusDetails = () => {
           };
           console.log(uploadBusDetails);
 
-          fetch("http://localhost:5000/uploadBus", {
+          fetch("import.meta.env.VITE_server_link/uploadBus", {
       method: "post",
       headers: {
         "content-type": "application/json",

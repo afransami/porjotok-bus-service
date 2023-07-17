@@ -65,7 +65,7 @@ const BusSeatPlan = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/selected-seat", {
+      const response = await fetch("import.meta.env.VITE_server_link/selected-seat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
