@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import SocialLogin from "../SolcilalLogin/SocialLogin";
 import { toast } from "react-hot-toast";
@@ -23,106 +23,35 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const [error, setError] = useState(" ");
-  const { createUser, loading, setLoading, updateUserProfile } = useContext(AuthContext);
+  const { createUser, setLoading, updateUserProfile } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     createUser(data.email, data.password)
-    .then(result => {
-      updateUserProfile(data.name, data.photoURL)
-        .then(() => {
-          toast.success('Signup successful')
-          saveUser(result.user)
-          reset()
-          navigate(from, { replace: true })
-        })
-        .catch(error => {
-          setLoading(false)
-          console.log(error.message)
-          toast.error(error.message)
-        })
-    })
-    .catch(error => {
-      setLoading(false)
-      console.log(error.message)
-      toast.error(error.message)
-    })
-
-
-
-    // createUser(data.email, data.password).then((result) => {
-    //   const user = result.user;
-    //   console.log(user);
-    //   toast.success("Successfully SignUp!");
-    //   saveUser(result.user);
-    //   updateUserProfile(data.name, data.photoURL)
-    //   setError("");
-    // })
-
-    // updateUserProfile(data.name, data.photoURL)
-    //   .then(() => {
-    //     const saveUser = {
-    //       name: data.name,
-    //       email: data.email,
-    //       photoURL: data.photoURL,
-    //     };
-
-    //     fetch(`http://localhost:5000/users/${user?.email}`, {
-    //       method: "PUT",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(saveUser),
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => {
-    //         if (data.insertedId) {
-    //           reset();              
-    //           navigate(from, { replace: true });
-    //         }
-    //       })
-    //   })
-    .catch((error) => console.error(error.message));
-    setError(error.message);
-    navigate(from, { replace: true });
+      .then((result) => {
+        updateUserProfile(data.name, data.photoURL)
+          .then(() => {
+            toast.success("Signup successful");
+            saveUser(result.user);
+            reset();
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {
+            setLoading(false);
+            console.log(error.message);
+            toast.error(error.message);
+          });
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error.message);
+        toast.error(error.message);
+      });
   };
 
-
-
-  // const onSubmit = (data) => {
-  //   createUser(data.email, data.password).then((result) => {
-  //     const loggedUser = result.user;
-  //     toast.success("Successfully SignUp!");
-  //     console.log(loggedUser);
-  //     setError("");
-
-  //     updateUserProfile(data.name, data.photoURL)
-  //       .then(() => {
-  //         const saveUser = { name: data.name, email: data.email, photoURL: data.photoURL, };
-  //         fetch("http://localhost:5000/users", {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify(saveUser),
-  //         })
-  //           .then((res) => res.json())
-  //           .then((data) => {
-  //             if (data.insertedId) {                
-  //               reset();                
-  //               navigate(from, { replace: true });
-  //             }
-  //           });
-  //       })
-  //       .catch((error) => console.error(error.message));
-  //     setError(error.message);
-  //     navigate(from, { replace: true });
-  //   });
-  // };
-  
   return (
     <div className="login-bg hero min-h-screen mx-auto container">
       <Helmet>
@@ -142,7 +71,7 @@ const SignUp = () => {
         </Player>
         <div className="card flex-shrink-0 bg-gray-100 shadow-xl">
           <h1 className="text-4xl p-5 font-bold">Sign Up!</h1>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <div className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -252,7 +181,7 @@ const SignUp = () => {
                 </Link>
               </p>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </div>

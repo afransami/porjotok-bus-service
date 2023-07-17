@@ -3,9 +3,10 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import SocialLogin from "../SolcilalLogin/SocialLogin";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -53,10 +54,9 @@ const Login = () => {
             buttons={["play", "repeat", "frame", "debug"]}
           />
         </Player>
-        <div className="card flex-shrink-0 bg-gray-100 shadow-xl">
-          {/* <div className="card flex-shrink-0 bg-gradient-to-r from-gray-200 to-neutral-200 shadow-xl bg-opacity-30"> */}
+        <div className="card flex-shrink-0 bg-gray-100 shadow-xl">          
           <h1 className="text-4xl p-5 font-bold">Login!</h1>
-          <form onSubmit={handleSubmit(handleLogin)}>
+          <Form onSubmit={handleSubmit(handleLogin)}>
             <div className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -116,11 +116,8 @@ const Login = () => {
                 )}
               </div>
 
-              {/* <p className="font-bold text-yellow-500 text-xl"></p> */}
               <div className="form-control mt-6">
-                <Link
-                  className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring text-center"                  
-                >
+                <button className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring text-center">
                   <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
 
                   <input
@@ -128,13 +125,7 @@ const Login = () => {
                     type="submit"
                     value="Login"
                   ></input>
-                </Link>
-
-                {/* <input
-                  className="btn btn-outline btn-error border-0 border-b-4 mt-4 bg-gradient-to-r from-neutral-600 via-green-600 to-neutral-600 rounded shadow-xl bg-opacity-30 text-xl"
-                  type="submit"
-                  value="Login"
-                /> */}
+                </button>
               </div>
               <SocialLogin></SocialLogin>
               <p className="text-center mt-5 font-semibold">
@@ -144,7 +135,7 @@ const Login = () => {
                 </Link>
               </p>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </div>

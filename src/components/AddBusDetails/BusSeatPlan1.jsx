@@ -25,32 +25,32 @@ const BusSeatPlan = () => {
   };
 
   const renderSeats = () => {
-    const totalSeats = 36; // Total number of seats in the bus
+    const totalSeats = 40; // Total number of seats in the bus
 
     const seats = [];
-    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 
     for (let i = 1; i <= totalSeats; i++) {
       const seatCategory = getSeatCategory(i);
       let seatClass = '';
 
       if (seatCategory === 'selected') {
-        seatClass = 'bg-blue-500 text-white';
-      } else if (seatCategory === 'booked') {
-        seatClass = 'bg-red-500 text-white cursor-not-allowed';
+        seatClass = 'bg-green-500 text-white';
+    //   } else if (seatCategory === 'booked') {
+    //     seatClass = 'bg-red-500 text-white cursor-not-allowed';
       } else {
         seatClass = 'bg-gray-200';
       }
 
       const rowLetter = letters[Math.floor((i - 1) / 4)];
-      const seatNumber = i % 4 === 0 ? 4 : i % 4;
+      const seatNumber = (i - 4 * Math.floor((i - 1) / 4));
 
       seats.push(
         <button
           key={i}
           className={`seat px-4 py-2 m-2 rounded ${seatClass}`}
           onClick={() => handleSeatClick(i)}
-          disabled={seatCategory === 'booked'}
+        //   disabled={seatCategory === 'booked'}
         >
           {rowLetter}-{seatNumber}
         </button>
@@ -60,34 +60,20 @@ const BusSeatPlan = () => {
     return seats;
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    // Send the selectedSeats array to MongoDB or perform any desired action
-    console.log(selectedSeats);
-    // Clear the selectedSeats array if needed
-    setSelectedSeats([]);
-  };
-
   return (
-
-    <div className="bus-seat-plan flex flex-col items-center justify-center">
+    <div className="bus-seat-plan flex flex-col items-center justify-center ">
       <div className='flex flex-col justify-end items-end relative'>
       <h2 className="text-2xl font-bold mb-8">Bus Seat Plan</h2>
-      <p className='text-5xl -right-20 text-green-400 absolute'><GiSteeringWheel></GiSteeringWheel></p>
+      <p className='text-5xl -right-20 absolute'><GiSteeringWheel></GiSteeringWheel></p>
       </div>
       <div className="seats">
-        <div className="border-4 grid lg:grid-cols-4 grid-cols-4 gap-4 mt-4">{renderSeats()}</div>
+        <div className="border-4 grid lg:grid-cols-4 grid-cols-4 gap-4 mt-4">
+          
+          {renderSeats()}
+          
+        </div>
       </div>
       <p className="mt-4">Selected Seats: {selectedSeats.join(', ')}</p>
-      <form onSubmit={handleFormSubmit}>
-        <button
-          type="submit"
-          className="bg-green-500 text-white py-2 px-4 mt-4 rounded"
-          disabled={selectedSeats.length === 0}
-        >
-          Submit
-        </button>
-      </form>
     </div>
   );
 };
