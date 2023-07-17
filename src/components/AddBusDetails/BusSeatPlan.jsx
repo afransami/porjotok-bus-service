@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { GiSteeringWheel } from "react-icons/gi";
+import { Form } from "react-router-dom";
 
 const BusSeatPlan = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -35,7 +36,7 @@ const BusSeatPlan = () => {
       let seatClass = "";
 
       if (seatCategory === "selected") {
-        seatClass = "bg-blue-500 text-white";
+        seatClass = "bg-green-500 text-white";
       } else if (seatCategory === "booked") {
         seatClass = "bg-red-500 text-white cursor-not-allowed";
       } else {
@@ -60,12 +61,26 @@ const BusSeatPlan = () => {
     return seats;
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // Send the selectedSeats array to MongoDB or perform any desired action
-    console.log(selectedSeats);
-    // Clear the selectedSeats array if needed
-    setSelectedSeats([]);
+
+    try {
+      const response = await fetch("http://localhost:5000/selected-seat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ seats: selectedSeats }),
+      });
+
+      const data = await response.json();
+      console.log(data); // Success message from the server
+
+      // Clear the selected seats
+      setSelectedSeats([]);
+    } catch (error) {
+      console.error("Error saving selected seats:", error);
+    }
   };
 
   return (
@@ -81,18 +96,34 @@ const BusSeatPlan = () => {
           {renderSeats()}
         </div>
       </div>
-      <p className="mt-4">Selected Seats: {selectedSeats.join(", ")}</p>
+      <div className="lg:flex justify-center items-center gap-4 mt-4">
+        <div className="flex justify-center items-center gap-2">
+          <p>Available Seat:</p>
+          <div className="badge bg-gray-300 badge-md"></div>
+        </div>
+        <div className="flex justify-center items-center gap-2">
+          <p>Selected Seat:</p>
+          <div className="badge bg-green-400 badge-md"></div>
+        </div>
+        <div className="flex justify-center items-center gap-2">
+          <p>Booked Seat:</p>
+          <div className="badge bg-red-500 badge-md"></div>
+        </div>
+      </div>
+      <p className="my-4 font-bold">
+        Selected Seats: {selectedSeats.join(", ")}
+      </p>
       <div className="group relative text-center block overflow-hidden border-b-0 px-8 py-2 focus:outline-none focus:ring">
-        <form onSubmit={handleFormSubmit}>
+        <Form onSubmit={handleFormSubmit}>
           <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
           <button
             type="submit"
             className="relative text-xl font-medium text-green-400 transition-colors group-hover:text-white"
             disabled={selectedSeats.length === 0}
           >
-            Submit
+            Book Seat
           </button>
-        </form>
+        </Form>
       </div>
     </div>
   );
