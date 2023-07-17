@@ -1,10 +1,11 @@
-
 export const saveUser = (user) => {  
+
     const currentUser = {
-      name: user.name,
+      name: user.displayName,
       email: user.email,
       photoURL: user.photoURL,
     } 
+    console.log(user);
 
     fetch(`http://localhost:5000/users/${user?.email}`, {
       method: "PUT",
@@ -17,3 +18,6 @@ export const saveUser = (user) => {
       .then((data) => console.log(data));
   };
   
+
+
+

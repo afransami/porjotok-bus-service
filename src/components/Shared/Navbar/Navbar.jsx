@@ -141,7 +141,7 @@ const Navbar = () => {
               <div className="dropdown dropdown-bottom dropdown-end">
                 <label tabIndex={0} className=" ">
                   <div className="avatar mr-4">
-                    <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <div className="w-12 rounded-full ring ring-green-400 ring-offset-base-100 ring-offset-0">
                       <img src={user?.photoURL} />
                     </div>
                   </div>

@@ -24,53 +24,105 @@ const SignUp = () => {
   } = useForm();
 
   const [error, setError] = useState(" ");
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, loading, setLoading, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   const onSubmit = async (data) => {
     createUser(data.email, data.password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        toast.success("Successfully SignUp!");
-        saveUser(result.user);
-        updateUserProfile(data.name, data.photURL)
-        setError("");
-        reset();
-        navigate(from, { replace: true });
-      })
+    .then(result => {
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          toast.success('Signup successful')
+          saveUser(result.user)
+          reset()
+          navigate(from, { replace: true })
+        })
+        .catch(error => {
+          setLoading(false)
+          console.log(error.message)
+          toast.error(error.message)
+        })
+    })
+    .catch(error => {
+      setLoading(false)
+      console.log(error.message)
+      toast.error(error.message)
+    })
 
-      // updateUserProfile(data.name, data.photURL).then(() => {
-      //   const saveUser = {
-      //     name: data.name,
-      //     email: data.email,
-      //     photoURL: data.photoURL,
-      //   };
 
-      //   fetch(`http://localhost:5000/users/${user?.email}`, {
-      //     method: "PUT",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(saveUser),
-      //   })
-      //     .then((res) => res.json())
-      //     .then((data) => {
-      //       if (data.insertedId) {
-      //         reset();
-      //         toast.success("User created successfully!");
-      //         reset();
-      //         navigate(from, { replace: true });
-      //       }
 
-      //     })
-      // })
-      .catch((error) => console.error(error.message));
+    // createUser(data.email, data.password).then((result) => {
+    //   const user = result.user;
+    //   console.log(user);
+    //   toast.success("Successfully SignUp!");
+    //   saveUser(result.user);
+    //   updateUserProfile(data.name, data.photoURL)
+    //   setError("");
+    // })
+
+    // updateUserProfile(data.name, data.photoURL)
+    //   .then(() => {
+    //     const saveUser = {
+    //       name: data.name,
+    //       email: data.email,
+    //       photoURL: data.photoURL,
+    //     };
+
+    //     fetch(`http://localhost:5000/users/${user?.email}`, {
+    //       method: "PUT",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(saveUser),
+    //     })
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //         if (data.insertedId) {
+    //           reset();              
+    //           navigate(from, { replace: true });
+    //         }
+    //       })
+    //   })
+    .catch((error) => console.error(error.message));
     setError(error.message);
+    navigate(from, { replace: true });
   };
 
+
+
+  // const onSubmit = (data) => {
+  //   createUser(data.email, data.password).then((result) => {
+  //     const loggedUser = result.user;
+  //     toast.success("Successfully SignUp!");
+  //     console.log(loggedUser);
+  //     setError("");
+
+  //     updateUserProfile(data.name, data.photoURL)
+  //       .then(() => {
+  //         const saveUser = { name: data.name, email: data.email, photoURL: data.photoURL, };
+  //         fetch("http://localhost:5000/users", {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify(saveUser),
+  //         })
+  //           .then((res) => res.json())
+  //           .then((data) => {
+  //             if (data.insertedId) {                
+  //               reset();                
+  //               navigate(from, { replace: true });
+  //             }
+  //           });
+  //       })
+  //       .catch((error) => console.error(error.message));
+  //     setError(error.message);
+  //     navigate(from, { replace: true });
+  //   });
+  // };
+  
   return (
     <div className="login-bg hero min-h-screen mx-auto container">
       <Helmet>
@@ -97,7 +149,7 @@ const SignUp = () => {
                   <span className="label-text">Name</span>
                 </label>
                 <input
-                  type="name"
+                  type="text"
                   placeholder="Name"
                   {...register("name")}
                   {...register("name", { required: true })}
@@ -124,8 +176,22 @@ const SignUp = () => {
                   </span>
                 )}
               </div>
-              <div className="form-control relative ">
-                <label className="label ">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo Url</span>
+                </label>
+                <input
+                  type="url"
+                  placeholder="Photo url"
+                  {...register("photoURL", { required: true })}
+                  className="input input-bordered"
+                />
+                {errors.photoURL && (
+                  <span className="text-red-500">This field is required</span>
+                )}
+              </div>
+              <div className="form-control relative">
+                <label className="label">
                   <span>Password</span>
                 </label>
                 <input
@@ -133,6 +199,8 @@ const SignUp = () => {
                   placeholder="Password"
                   {...register("password", {
                     required: true,
+                    minLength: 6,
+                    pattern: /[A-Za-z]+/i,
                   })}
                   className="input  input-bordered "
                 />
