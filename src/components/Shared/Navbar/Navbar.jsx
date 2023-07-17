@@ -39,17 +39,6 @@ const Navbar = () => {
             Home
           </span>
         </Link>
-
-        {/* <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive
-              ? "btn-outline btn-error border-0 border-b-4 bg-gradient-to-r from-neutral-600 via-green-600 to-neutral-600 rounded bg-opacity-30"
-              : "default"
-          }
-        >
-          Home
-        </NavLink> */}
       </li>
       <li>
         <Link
@@ -62,17 +51,6 @@ const Navbar = () => {
             Bus Reservation
           </span>
         </Link>
-
-        {/* <NavLink
-          to="/bus-reservation"
-          className={({ isActive }) =>
-            isActive
-              ? "btn-outline btn-error border-0 border-b-4 bg-gradient-to-r from-neutral-600 via-green-600 to-neutral-600 rounded bg-opacity-30"
-              : "default"
-          }
-        >
-          Bus Reservation
-        </NavLink> */}
       </li>
       <li>
         <Link
@@ -85,20 +63,7 @@ const Navbar = () => {
             Contact Us
           </span>
         </Link>
-
-        {/* 
-        <NavLink
-          to="/contactUs"
-          className={({ isActive }) =>
-            isActive
-              ? "btn-outline btn-error border-0 border-b-4 bg-gradient-to-r from-neutral-600 via-green-600 to-neutral-600 rounded bg-opacity-30"
-              : "default"
-          }
-        >
-          Contact Us
-        </NavLink> */}
       </li>
-    
     </>
   );
 
@@ -158,34 +123,21 @@ const Navbar = () => {
                       <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
 
                       <span className="relative font-medium text-green-400 transition-colors group-hover:text-white">
-                      Dashboard
+                        Dashboard
                       </span>
                     </Link>
-
-                    {/* <NavLink
-                      to="/dashboard"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "btn-outline btn-error border-0 border-b-4 bg-gradient-to-r from-neutral-600 via-green-600 to-neutral-600 rounded bg-opacity-30"
-                          : "default"
-                      }
-                    >
-                      Dashboard
-                    </NavLink> */}
                   </li>
                   <li>
-                  <Link
+                    <Link
                       className="group relative inline-block overflow-hidden border-b-4 px-4 py-3 focus:outline-none focus:ring"
                       onClick={handleLogOut}
                     >
                       <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
 
                       <span className="relative font-medium text-green-400 transition-colors group-hover:text-white">
-                      Log Out
+                        Log Out
                       </span>
-                    </Link>                   
-                    
-                    {/* <button onClick={handleLogOut}>Log Out</button> */}
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -201,12 +153,6 @@ const Navbar = () => {
                 Login
               </span>
             </Link>
-
-            // <Link to="/bus-reservation">
-            //   <button className="btn btn-outline btn-error border-0 border-b-4 bg-gradient-to-r from-neutral-600 via-green-600 to-neutral-600 rounded bg-opacity-30">
-            //     login
-            //   </button>
-            // </Link>
           )}
         </div>
       </div>
