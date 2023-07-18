@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { GiSteeringWheel } from "react-icons/gi";
 import { Form } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
 
 const BusSeatPlan = () => {
+  const {user} = useContext(AuthContext)
   const [selectedSeats, setSelectedSeats] = useState([]);
-
-  const handleSeatClick = (seatNumber) => {
+  const handleSeatClick = (seatNumber) => {    
+    
     if (selectedSeats.includes(seatNumber)) {
       // Seat is already selected, so remove it from the selection
       setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));

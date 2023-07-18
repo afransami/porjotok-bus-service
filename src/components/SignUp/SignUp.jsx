@@ -8,6 +8,7 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 import SocialLogin from "../SolcilalLogin/SocialLogin";
 import { toast } from "react-hot-toast";
 import { saveUser } from "../API/Auth";
+import RegAnim from "../../../public/100548-bus-carga-trackmile.json"
 
 const SignUp = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -61,7 +62,7 @@ const SignUp = () => {
         <Player
           autoplay
           loop
-          src="../../../src/assets/100548-bus-carga-trackmile.json"
+          src={RegAnim}          
           className="w-auto"
         >
           <Controls

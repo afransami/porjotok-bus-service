@@ -7,6 +7,7 @@ import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import SocialLogin from "../SolcilalLogin/SocialLogin";
 import { toast } from "react-hot-toast";
+import loginAnim from "../../../public/100548-bus-carga-trackmile.json"
 
 const Login = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -46,7 +47,7 @@ const Login = () => {
         <Player
           autoplay
           loop
-          src="../../../src/assets/100548-bus-carga-trackmile.json"
+          src={loginAnim}          
           className="w-auto"
         >
           <Controls
