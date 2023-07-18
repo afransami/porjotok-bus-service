@@ -30,7 +30,7 @@ const Navbar = () => {
     <>
       <li>
         <Link
-          className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring"
+          className="group relative inline-block overflow-hidden border-b-4 px-8 py-2"
           to="/"
         >
           <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
@@ -42,7 +42,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring"
+          className="group relative inline-block overflow-hidden border-b-4 px-8 py-2"
           to="/bus-reservation"
         >
           <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
@@ -54,7 +54,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring"
+          className="group relative inline-block overflow-hidden border-b-4 px-8 py-2"
           to="/contactUs"
         >
           <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
@@ -117,7 +117,7 @@ const Navbar = () => {
                 >
                   <li>
                     <Link
-                      className="group relative inline-block overflow-hidden border-b-4 px-4 py-3 focus:outline-none focus:ring"
+                      className="group relative inline-block overflow-hidden border-b-4 px-4 py-2"
                       to="/dashboard"
                     >
                       <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
@@ -129,7 +129,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <Link
-                      className="group relative inline-block overflow-hidden border-b-4 px-4 py-3 focus:outline-none focus:ring"
+                      className="group relative inline-block overflow-hidden border-b-4 px-4 py-2"
                       onClick={handleLogOut}
                     >
                       <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
@@ -144,7 +144,7 @@ const Navbar = () => {
             </>
           ) : (
             <Link
-              className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring"
+              className="group relative inline-block overflow-hidden border-b-4 px-8 py-2"
               to="/login"
             >
               <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>

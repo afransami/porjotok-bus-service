@@ -24,7 +24,7 @@ const AddBusDetails = () => {
     };
     console.log(uploadBusDetails);
 
-    fetch("http://localhost:5000/uploadBus", {
+    fetch("https://porjotok-bus-service-server.vercel.app/uploadBus", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -169,7 +169,7 @@ const AddBusDetails = () => {
 
                 <div className="mt-4">
                   <button
-                    className="group relative text-center block w-full overflow-hidden border-b-0 px-8 py-3 focus:outline-none focus:ring"
+                    className="group relative text-center block w-full overflow-hidden border-b-0 px-8 py-2"
                     type="submit"
                   >
                     <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>

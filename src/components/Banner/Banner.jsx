@@ -26,59 +26,31 @@ const Banner = () => {
             </p>
 
             <div className=" mt-4 flex justify-start items-center gap-4">
-              {/* <Link>
-                <button
-                  className="btn btn-outline text-white bg-red-600 px-2" >
-                  Get Started                  
-                </button>
-              </Link> */}
-
               <div>
-              <Link
-                className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring"
-                to="/"
-              >
-                <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
-
-                <span className="relative font-medium text-green-400 transition-colors group-hover:text-white">
-                  Get Started
-                </span>
-              </Link>
-              </div>
-
-              
-              <div>
-              <Link
-                className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring"
-                to="/"
-              >
-                <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
-
-                <span className="relative font-medium text-green-400 transition-colors group-hover:text-white">
-                  Get Started
-                </span>
-              </Link>
-              </div>
-
-              {/* <Link>
-                <button
-                  className="btn btn-outline border-white text-white transition-transform hover:bg-red-600 px-2 " >
-                  Get Started                  
-                </button>
-              </Link> */}
-
-              {/* <Link>
-                <button
-                  className="group relative inline-block overflow-hidden border border-white px-8 py-2 focus:outline-none focus:ring"
-                  href="/download"
+                <Link
+                  className="group relative inline-block overflow-hidden border-b-4 px-8 py-2"
+                  to="/"
                 >
-                  <span className="absolute inset-x-0 bottom-0 h-[2px] bg-red-600 transition-all group-hover:h-full group-active:bg-red-600"></span>
+                  <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
 
-                  <span className="relative text-sm font-medium text-white transition-colors group-hover:text-white">
+                  <span className="relative font-medium text-green-400 transition-colors group-hover:text-white">
                     Get Started
                   </span>
-                </button>
-              </Link> */}
+                </Link>
+              </div>
+
+              <div>
+                <Link
+                  className="group relative inline-block overflow-hidden border-b-4 px-8 py-2"
+                  to="/"
+                >
+                  <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
+
+                  <span className="relative font-medium text-green-400 transition-colors group-hover:text-white">
+                    Get Started
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

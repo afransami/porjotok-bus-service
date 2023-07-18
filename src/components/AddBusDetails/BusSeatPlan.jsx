@@ -65,7 +65,7 @@ const BusSeatPlan = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/selected-seat", {
+      const response = await fetch("https://porjotok-bus-service-server.vercel.app/selected-seat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,24 +96,24 @@ const BusSeatPlan = () => {
           {renderSeats()}
         </div>
       </div>
-      <div className="lg:flex justify-center items-center gap-4 mt-4">
+      <div className="flex justify-center items-center gap-4 mt-4">
         <div className="flex justify-center items-center gap-2">
-          <p>Available Seat:</p>
+          <p>Available:</p>
           <div className="badge bg-gray-300 badge-md"></div>
         </div>
         <div className="flex justify-center items-center gap-2">
-          <p>Selected Seat:</p>
+          <p>Selected:</p>
           <div className="badge bg-green-400 badge-md"></div>
         </div>
         <div className="flex justify-center items-center gap-2">
-          <p>Booked Seat:</p>
+          <p>Booked:</p>
           <div className="badge bg-red-500 badge-md"></div>
         </div>
       </div>
       <p className="my-4 font-bold">
         Selected Seats: {selectedSeats.join(", ")}
       </p>
-      <div className="group relative text-center block overflow-hidden border-b-0 px-8 py-2 focus:outline-none focus:ring">
+      <div className="group relative text-center block overflow-hidden border-b-0 px-8 py-2">
         <Form onSubmit={handleFormSubmit}>
           <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
           <button

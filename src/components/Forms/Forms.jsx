@@ -62,7 +62,7 @@ const Forms = () => {
 
         <div>
           <Link
-            className="group relative text-center block w-full overflow-hidden border-b-0 px-8 py-3 focus:outline-none focus:ring"
+            className="group relative text-center block w-full overflow-hidden border-b-0 px-8 py-2"
             to="/"
           >
             <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>

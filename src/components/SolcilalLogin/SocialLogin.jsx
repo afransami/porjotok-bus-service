@@ -27,7 +27,7 @@ const SocialLogin = () => {
       <div className="text-center flex justify-center gap-8">
         <Link
           onClick={handleGoogleLogin}
-          className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring"
+          className="group relative inline-block overflow-hidden border-b-4 px-8 py-2"
           to="/bus-reservation"
         >
           <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
@@ -43,7 +43,7 @@ const SocialLogin = () => {
 
         <Link
           onClick={handleGoogleLogin}
-          className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring"
+          className="group relative inline-block overflow-hidden border-b-4 px-8 py-2"
           to="/bus-reservation"
         >
           <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
@@ -59,7 +59,7 @@ const SocialLogin = () => {
 
         <Link
           onClick={handleGoogleLogin}
-          className="group relative inline-block overflow-hidden border-b-4 px-8 py-3 focus:outline-none focus:ring"
+          className="group relative inline-block overflow-hidden border-b-4 px-8 py-2"
           to="/bus-reservation"
         >
           <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
