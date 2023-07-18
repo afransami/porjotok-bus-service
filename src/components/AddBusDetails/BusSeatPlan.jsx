@@ -65,7 +65,7 @@ const BusSeatPlan = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://porjotok-bus-service-server.vercel.app/selected-seat", {
+      const response = await fetch("http://localhost:5000/selected-seat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

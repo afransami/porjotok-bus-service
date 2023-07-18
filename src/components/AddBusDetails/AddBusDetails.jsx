@@ -24,7 +24,7 @@ const AddBusDetails = () => {
     };
     console.log(uploadBusDetails);
 
-    fetch("https://porjotok-bus-service-server.vercel.app/uploadBus", {
+    fetch("http://localhost:5000/uploadBus", {
       method: "post",
       headers: {
         "content-type": "application/json",
